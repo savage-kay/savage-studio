@@ -8,7 +8,7 @@ import ContactSection from "@/components/ContactSection";
 const Index = () => {
   return (
     <main className="bg-background min-h-screen overflow-x-hidden">
-      <HeroSection />
+      <Navbar />
       <div className="gold-line" />
       <AboutSection />
       <div className="gold-line" />

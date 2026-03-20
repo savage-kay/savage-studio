@@ -15,7 +15,7 @@ const skills = [
 
 const SkillsSection = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 bg-card noise-texture">
+    <section id="skills" className="relative py-24 md:py-36 px-6 bg-card noise-texture">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 noise-texture">
+    <section id="about" className="relative py-24 md:py-36 px-6 noise-texture">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
           {/* Label */}
