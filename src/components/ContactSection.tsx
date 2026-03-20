@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const ContactSection = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 noise-texture">
+    <section id="contact" className="relative py-24 md:py-36 px-6 noise-texture">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
