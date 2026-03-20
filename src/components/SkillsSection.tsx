@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 
 const skills = [
   { name: "UI/UX Design", level: 95 },
+  { name: "Frontend Development", level: 90 },
+  { name: "React / Next.js", level: 92 },
+  { name: "TypeScript", level: 88 },
+  { name: "Tailwind CSS", level: 94 },
   { name: "Branding & Identity", level: 90 },
   { name: "Typography", level: 92 },
   { name: "Figma", level: 96 },

@@ -113,7 +113,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.1 }}
           className="font-body text-sm md:text-base uppercase text-gold-light mb-6"
         >
-          UI/UX &amp; Graphic Designer
+          UI/UX Designer · Frontend Developer
         </motion.p>
 
         {/* 3D letter-by-letter reveal */}

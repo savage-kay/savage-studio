@@ -34,13 +34,14 @@ const AboutSection = () => {
               <span className="text-gold font-semibold">dominate</span>.
             </p>
             <p className="font-body text-base md:text-lg leading-relaxed text-muted-foreground">
-              Savage is a UI/UX and Graphic Designer who builds brands that refuse
-              to be ignored. With an obsession for bold typography, ruthless
-              layouts, and pixel-perfect execution — every project is a statement.
+              Savage is a UI/UX Designer and Frontend Developer who builds brands
+              and products that refuse to be ignored. With an obsession for bold
+              typography, ruthless layouts, and pixel-perfect code — every project
+              is a statement.
             </p>
             <p className="font-body text-base md:text-lg leading-relaxed text-muted-foreground">
               No templates. No trends for the sake of trends. Just raw, intentional
-              design that makes people feel something. If your brand needs a
+              design backed by clean, performant code. If your brand needs a
               heartbeat — you found the right one.
             </p>
             <div className="pt-4 flex items-center gap-4">
