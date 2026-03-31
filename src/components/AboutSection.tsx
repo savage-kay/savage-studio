@@ -37,7 +37,7 @@ const AboutSection = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-block px-8 py-4 bg-gold text-primary font-body font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:bg-transparent hover:text-gold border border-gold shadow-[0_0_15px_hsl(var(--gold)/0.2)] hover:shadow-[0_0_25px_hsl(var(--gold)/0.4)] active:bg-secondary active:text-secondary-foreground"
+                className="inline-block px-8 py-4 bg-gold text-black font-body font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:bg-transparent hover:text-gold border border-gold shadow-[0_0_15px_hsl(var(--gold)/0.2)] hover:shadow-[0_0_25px_hsl(var(--gold)/0.4)] active:bg-secondary active:text-secondary-foreground"
               >
                 View CV
               </motion.a>
