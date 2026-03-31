@@ -83,16 +83,6 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
-          {config?.cv_url && (
-            <a
-              href={config.cv_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 border border-gold/30 text-gold font-body text-xs tracking-[0.2em] uppercase hover:bg-gold/10 transition-colors"
-            >
-              Resume
-            </a>
-          )}
         </div>
 
         {/* Mobile toggle */}
@@ -136,16 +126,6 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
-          {config?.cv_url && (
-            <a
-              href={config.cv_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 px-10 py-4 bg-gold text-black font-body font-black text-sm tracking-[0.2em] uppercase transition-all duration-300 hover:bg-transparent hover:text-gold border border-gold"
-            >
-              View Resume
-            </a>
-          )}
         </div>
       </motion.div>
     </motion.nav>
