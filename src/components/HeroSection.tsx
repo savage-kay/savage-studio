@@ -11,14 +11,13 @@ const particles = Array.from({ length: 30 }, (_, i) => ({
 }));
 
 const letterVariants = {
-  hidden: { opacity: 0, y: 80, rotateX: -90 },
+  hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    rotateX: 0,
     transition: {
       duration: 0.8,
-      delay: 0.3 + i * 0.1,
+      delay: 0.3 + i * 0.15,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -129,7 +128,6 @@ const HeroSection = () => {
               initial="hidden"
               animate="visible"
               className="inline-block"
-              style={{ transformStyle: "preserve-3d" }}
               whileHover={{
                 scale: 1.2,
                 textShadow: "0 0 40px hsl(43 72% 54% / 0.6)",

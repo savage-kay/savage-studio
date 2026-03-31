@@ -37,10 +37,10 @@ const ContactSection = () => {
           className="space-y-6"
         >
           <a
-            href="mailto:hello@savagedesigns.co"
+            href="tel:+233500865112"
             className="block font-display text-2xl md:text-4xl text-card-foreground hover:text-gold transition-colors duration-300"
           >
-            hello@savagedesigns.co
+            +233 50 086 5112
           </a>
 
           <div className="gold-line max-w-xs mx-auto my-8" />
