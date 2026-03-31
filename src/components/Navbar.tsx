@@ -119,15 +119,15 @@ const Navbar = () => {
       {/* Mobile menu */}
       <motion.div
         initial={false}
-        animate={menuOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-        className="md:hidden overflow-hidden"
+        animate={menuOpen ? { height: "calc(100vh - 72px)", opacity: 1 } : { height: 0, opacity: 0 }}
+        className="fixed top-[72px] left-0 right-0 md:hidden bg-background/95 backdrop-blur-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-40 origin-top"
       >
-        <div className="flex flex-col items-center gap-6 py-8">
+        <div className="flex flex-col items-center gap-10 py-16 border-t border-gold/10 h-full overflow-y-auto pb-32">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className={`font-body text-sm tracking-[0.3em] uppercase transition-colors duration-300 ${
+              className={`font-display font-medium text-2xl tracking-[0.3em] uppercase transition-colors duration-300 ${
                 active === link.href.slice(1)
                   ? "text-gold"
                   : "text-muted-foreground hover:text-gold"
@@ -141,9 +141,9 @@ const Navbar = () => {
               href={config.cv_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 border border-gold/30 text-gold font-body text-sm tracking-[0.2em] uppercase hover:bg-gold/10 transition-colors mt-2"
+              className="mt-6 px-10 py-4 bg-gold text-black font-body font-black text-sm tracking-[0.2em] uppercase transition-all duration-300 hover:bg-transparent hover:text-gold border border-gold"
             >
-              Resume PDF
+              View Resume
             </a>
           )}
         </div>
