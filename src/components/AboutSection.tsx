@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 const AboutSection = () => {
+  const { data: config } = useQuery({
+    queryKey: ["siteConfig"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("site_config").select("*").eq("id", 1).single();
+      if (error && error.code !== 'PGRST116') throw error;
+      return data;
+    },
+  });
   return (
     <section id="about" className="relative py-24 md:py-36 px-6 noise-texture">
       <div className="max-w-5xl mx-auto">
@@ -18,7 +28,20 @@ const AboutSection = () => {
             <h2 className="font-display font-black text-4xl md:text-5xl text-gradient-gold leading-tight">
               Who is<br />Savage?
             </h2>
-            <div className="gold-line mt-6 max-w-[80px]" />
+            <div className="gold-line mt-6 max-w-[80px] mb-8" />
+
+            {config?.cv_url && (
+              <motion.a
+                href={config.cv_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block px-8 py-4 bg-secondary text-secondary-foreground font-body font-bold text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:bg-gold hover:text-primary rounded-sm border border-gold/20 shadow-[0_0_15px_hsl(var(--gold)/0.05)] hover:shadow-[0_0_25px_hsl(var(--gold)/0.2)]"
+              >
+                View CV
+              </motion.a>
+            )}
           </motion.div>
 
           {/* Bio */}
@@ -44,11 +67,13 @@ const AboutSection = () => {
               design backed by clean, performant code. If your brand needs a
               heartbeat — you found the right one.
             </p>
-            <div className="pt-4 flex items-center gap-4">
-              <div className="h-px flex-1 bg-gradient-to-r from-gold/30 to-transparent" />
-              <span className="font-display italic text-sm text-gold">
-                "Average is the enemy."
-              </span>
+            <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-center gap-4 flex-1 w-full">
+                <div className="h-px w-16 sm:flex-1 bg-gradient-to-r from-gold/30 to-transparent" />
+                <span className="font-display italic text-sm text-gold whitespace-nowrap">
+                  "Average is the enemy."
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>

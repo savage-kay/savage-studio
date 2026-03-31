@@ -1,5 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -13,6 +15,15 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.95]);
+
+  const { data: config } = useQuery({
+    queryKey: ["siteConfig"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("site_config").select("*").eq("id", 1).single();
+      if (error && error.code !== 'PGRST116') throw error;
+      return data;
+    },
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +83,16 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
+          {config?.cv_url && (
+            <a
+              href={config.cv_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2 border border-gold/30 text-gold font-body text-xs tracking-[0.2em] uppercase hover:bg-gold/10 transition-colors"
+            >
+              Resume
+            </a>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -115,6 +136,16 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
+          {config?.cv_url && (
+            <a
+              href={config.cv_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 border border-gold/30 text-gold font-body text-sm tracking-[0.2em] uppercase hover:bg-gold/10 transition-colors mt-2"
+            >
+              Resume PDF
+            </a>
+          )}
         </div>
       </motion.div>
     </motion.nav>

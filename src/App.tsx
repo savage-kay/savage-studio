@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Admin from "./pages/Admin.tsx";
+import { LoadingScreen } from "./components/LoadingScreen.tsx";
 
 const queryClient = new QueryClient();
 
@@ -14,11 +16,17 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <LoadingScreen />
+        <div className="min-h-screen flex flex-col w-full">
+          <main className="flex-1 w-full">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/admin" element={<Admin />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

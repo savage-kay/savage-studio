@@ -1,19 +1,16 @@
 import { motion } from "framer-motion";
-
-const skills = [
-  { name: "UI/UX Design", level: 95 },
-  { name: "Frontend Development", level: 90 },
-  { name: "React / Next.js", level: 92 },
-  { name: "TypeScript", level: 88 },
-  { name: "Tailwind CSS", level: 94 },
-  { name: "Branding & Identity", level: 90 },
-  { name: "Typography", level: 92 },
-  { name: "Figma", level: 96 },
-  { name: "Visual Design", level: 88 },
-  { name: "Motion Design", level: 78 },
-];
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 const SkillsSection = () => {
+  const { data: skills } = useQuery({
+    queryKey: ["skills"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("skills").select("*").order("created_at", { ascending: true });
+      if (error) throw error;
+      return data;
+    },
+  });
   return (
     <section id="skills" className="relative py-24 md:py-36 px-6 bg-card noise-texture">
       <div className="max-w-4xl mx-auto">
@@ -33,9 +30,9 @@ const SkillsSection = () => {
         </motion.div>
 
         <div className="space-y-8">
-          {skills.map((skill, i) => (
+          {skills && skills.map((skill: any, i: number) => (
             <motion.div
-              key={skill.name}
+              key={skill.id || skill.name}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -63,6 +60,9 @@ const SkillsSection = () => {
               </div>
             </motion.div>
           ))}
+          {(!skills || skills.length === 0) && (
+            <div className="text-center text-muted-foreground py-10 font-body">No skills available yet.</div>
+          )}
         </div>
       </div>
     </section>

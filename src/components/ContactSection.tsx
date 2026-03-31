@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 const ContactSection = () => {
+  const { data: socials } = useQuery({
+    queryKey: ["socials"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("social_links").select("*").order("created_at", { ascending: true });
+      if (error) throw error;
+      return data;
+    },
+  });
   return (
     <section id="contact" className="relative py-24 md:py-36 px-6 noise-texture">
       <div className="max-w-4xl mx-auto text-center">
@@ -35,17 +45,22 @@ const ContactSection = () => {
 
           <div className="gold-line max-w-xs mx-auto my-8" />
 
-          <div className="flex items-center justify-center gap-8">
-            {["Dribbble", "Behance", "Instagram", "LinkedIn"].map((social) => (
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            {socials && socials.map((social: any) => (
               <motion.a
-                key={social}
-                href="#"
+                key={social.id}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -2 }}
-                className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-gold transition-colors duration-300"
+                className="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-muted-foreground hover:text-gold transition-colors duration-300"
               >
-                {social}
+                {social.platform}
               </motion.a>
             ))}
+            {(!socials || socials.length === 0) && (
+              <span className="text-muted-foreground text-sm">No social links yet.</span>
+            )}
           </div>
         </motion.div>
 
