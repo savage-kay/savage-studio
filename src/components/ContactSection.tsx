@@ -73,7 +73,7 @@ const ContactSection = () => {
           className="mt-24 pt-8 border-t border-gold/10"
         >
           <p className="font-body text-xs text-muted-foreground tracking-widest uppercase">
-            © 2026 Savage. All rights reserved.
+            © 2026 <a href="/admin" className="hover:text-gold transition-colors duration-300 cursor-pointer">Savage</a>. All rights reserved.
           </p>
         </motion.div>
       </div>
